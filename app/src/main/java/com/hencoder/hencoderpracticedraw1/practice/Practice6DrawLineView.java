@@ -39,7 +39,7 @@ public class Practice6DrawLineView extends View {
 
         mPaint.setColor(Color.GREEN);
         float[] points = {300, 50, 450, 200, 600, 200, 500, 300};
-        canvas.drawLines(points, mPaint);
+//        canvas.drawLines(points, mPaint);
         canvas.drawLines(points, 2, 4, mPaint);
 
         mPaint.reset();
