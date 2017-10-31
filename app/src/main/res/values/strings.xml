@@ -11,5 +11,6 @@
     <string name="title_draw_path">drawPath()</string>
     <string name="title_draw_histogram">直方图</string>
     <string name="title_draw_pie_chart">饼图</string>
-    <string name="title_draw_12">Shader使用</string>
+    <string name="title_draw_12">Shader使用1</string>
+    <string name="title_draw_13">Shader使用2</string>
 </resources>

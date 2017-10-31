@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         pageModels.add(new PageModel(R.layout.sample_path, R.string.title_draw_path, R.layout.practice_path));
         pageModels.add(new PageModel(R.layout.sample_histogram, R.string.title_draw_histogram, R.layout.practice_histogram));
         pageModels.add(new PageModel(R.layout.sample_pie_chart, R.string.title_draw_pie_chart, R.layout.practice_pie_chart));
-        pageModels.add(new PageModel(R.layout.sample_pie_chart, R.string.title_draw_12, R.layout.practice_12));
+        pageModels.add(new PageModel(R.layout.sample_circle, R.string.title_draw_12, R.layout.practice_12));
+        pageModels.add(new PageModel(R.layout.sample_pie_canvas_filter, R.string.title_draw_13, R.layout.practice_13_filter));
 
     }
 
