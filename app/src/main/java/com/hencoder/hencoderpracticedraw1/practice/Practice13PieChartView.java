@@ -2,67 +2,65 @@ package com.hencoder.hencoderpracticedraw1.practice;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.ComposeShader;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import android.graphics.RadialGradient;
-import android.graphics.Shader;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Xfermode;
+import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
-
-import com.hencoder.hencoderpracticedraw1.R;
 
 public class Practice13PieChartView extends View {
 
     private Paint mPaint = new Paint();
 
     public Practice13PieChartView(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public Practice13PieChartView(Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
-    Shader shader, shader1;
-    Shader all;
+    Bitmap b1, b2;
     Paint paint;
 
     public Practice13PieChartView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        setLayerType(View.LAYER_TYPE_SOFTWARE,null);//Canvas和Paint有部分方法不支持硬件加速，如果不关闭，会显示不正常。如组合模式ComposeShader
-
+        setLayerType(View.LAYER_TYPE_SOFTWARE, null);//Canvas和Paint有部分方法不支持硬件加速，如果不关闭，会显示不正常。如组合模式ComposeShader
 
         paint = new Paint();
 
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.goldrecord_su);
-        shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-        shader.setLocalMatrix(new Matrix());
+        b1 = Bitmap.createBitmap(200, 200, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(b1);
+        paint.setColor(Color.RED);
+        canvas.drawCircle(100, 100, 100, paint);
 
-
-        Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), R.drawable.mantenghuawenmodianshiliangbeijing_3924704);
-        shader1 = new BitmapShader(bitmap1, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
-        all = new ComposeShader(shader1, shader, PorterDuff.Mode.DST_ATOP);
+        b2 = Bitmap.createBitmap(200, 200, Bitmap.Config.ARGB_8888);
+        canvas = new Canvas(b2);
+        paint.setColor(Color.BLUE);
+        canvas.drawRect(0, 0, 100, 100, paint);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        paint.setColor(Color.RED);
-        canvas.drawCircle(200,200,200,paint);
+        canvas.drawColor(Color.GREEN);
+        Xfermode xfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
 
-        paint.setColor(Color.BLUE);
-        canvas.drawRect(200,200,500,500,paint);
-
+        int saveLayer = canvas.saveLayer(null, null, Canvas.ALL_SAVE_FLAG);
+        canvas.drawBitmap(b2, 0, 0, paint);
+        paint.setXfermode(xfermode);
+        canvas.drawBitmap(b1, 0, 0, paint);
+        paint.setXfermode(null);
+        canvas.restoreToCount(saveLayer);
 
     }
 }
