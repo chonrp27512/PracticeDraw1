@@ -1,5 +1,5 @@
 [https://juejin.im/post/596baf5f6fb9a06bb15a3df9](https://juejin.im/post/596baf5f6fb9a06bb15a3df9 "自定义 View 1-2 Paint 详解")
-#自定义View绘制 第二期：Paint深入详解
+#自定义View绘制 第一期：Paint深入详解
 
 	基础的Paint能实现基本的绘制需求，而深入Paint后，能够做出一些更加细致、炫酷的效果。
 
@@ -250,7 +250,5 @@ Android中Canvas绘图之PorterDuffXfermode使用及工作原理详解：
 	
 	paint.setDither(boolean) 
 	paint.setFilterBitmap(boolean)
-
-#####2.4.1 
 
 
