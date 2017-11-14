@@ -35,20 +35,25 @@ public class Practice11PieChartView extends View {
 
         // 画6个扇形
         mPaint.setColor(Color.parseColor("#FFC107"));
-        canvas.drawArc(200, 100, 700, 600, -60, 59, true, mPaint);
+        mPaint.setAntiAlias(true);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeWidth(100);
+        canvas.drawArc(200, 100, 700, 600, -60, 59, false, mPaint);
         mPaint.setColor(Color.parseColor("#9C27B0"));
-        canvas.drawArc(200, 103, 700, 603, 0, 6, true, mPaint);
+        canvas.drawArc(200, 100, 700, 600, 0, 6, false, mPaint);
         mPaint.setColor(Color.parseColor("#9E9E9E"));
-        canvas.drawArc(200, 106, 700, 606, 8, 6, true, mPaint);
+        canvas.drawArc(200, 100, 700, 600, 8, 6, false, mPaint);
         mPaint.setColor(Color.parseColor("#009688"));
-        canvas.drawArc(200, 109, 700, 609, 16, 45, true, mPaint);
+        canvas.drawArc(200, 100, 700, 600, 16, 45, false, mPaint);
         mPaint.setColor(Color.parseColor("#2196F3"));
-        canvas.drawArc(197, 109, 697, 609, 63, 117, true, mPaint);
+        canvas.drawArc(200, 100, 700, 600, 63, 117, false, mPaint);
         mPaint.setColor(Color.parseColor("#F44336"));
-        canvas.drawArc(190, 95, 690, 595, -180, 120, true, mPaint);
+        canvas.drawArc(200, 100, 700, 600, -180, 120, false, mPaint);
+        mPaint.reset();
         mPaint.setColor(Color.WHITE);
         mPaint.setTextSize(40);
         canvas.drawText("饼图", 400, 700, mPaint);
+
 
         // 画文字
         Path path1 = new Path();
